@@ -1,0 +1,389 @@
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+  grid-gap: 20px;
+  
+}
+
+/* Style for the gallery item */
+.gallery-item {
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px #ccc;
+  height: 50%;
+  width:40%;
+}
+
+/* Style for the gallery item hover effect */
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+/* Style for the gallery item image */
+.gallery-item img {
+  width: 40%;
+  height: auto;
+  border-radius: 5px;
+} 
+
+  
+  /*.rectblog {
+   position:absolute;
+  height:58px;
+  left:0px;
+  width:100%;
+
+  background-color: #C8DBDC;
+  
+  display: inline-block;
+  }
+  
+  .blogword {
+    position:absolute;
+    font-size: 50px; 
+    color:#C76A07;
+    left: 50px;
+    font-weight: bold;
+  
+  }
+
+  a {
+
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    
+  }
+
+
+  .category {
+    position:relative;
+    display:flex;
+    gap:20px;
+    
+  }
+
+  .html {
+    position: relative;
+width: 120px;
+height: 30px;
+left: 155px;
+top: 78px;
+text-align: center;
+background: #FFFFFF;
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+border-radius: 10px;
+  }
+
+  #htmlwords {
+    margin:3px;
+    font-size: 20px;
+    text-align:center;
+  }
+
+  .css {
+    position: relative;
+width: 120px;
+height: 30px;
+left: 155px;
+top: 78px;
+text-align: center;
+background: #FFFFFF;
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+border-radius: 10px;
+  }
+
+
+  #csswords {
+    margin:3px;
+    font-size: 20px;
+    text-align:center;
+  }
+
+  .sql {
+    position: relative;
+width: 120px;
+height: 30px;
+left: 155px;
+top: 78px;
+text-align: center;
+background: #FFFFFF;
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+border-radius: 10px;
+  }
+
+
+  #sqlwords {
+ margin:3px;
+font-size: 20px;
+text-align:center;
+  }
+
+.articlerectangle {
+  position:relative;
+  display:flex;  
+  vertical-align: middle;
+  
+
+margin-top:100px;
+  width: 8em;
+  left:70px;
+    margin-top:100px;
+  background-color:white;
+  height:800px;
+  width:1120px;
+  background: #FFFFFF;
+box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+border-radius: 0px 0px 0px 0px;
+
+ 
+}
+
+.scroll {
+  position:absolute;
+  top:14px;
+  background-color: #C76A07;
+  background-size:auto;
+background-clip: text;
+-webkit-background-clip: text;
+font-size:45px;
+font-weight:bold;
+
+}
+
+
+  
+
+  .article1
+  {
+    position: absolute;
+width: 545px;
+height: 300px;
+right: 10px;
+top: 10px;
+
+background: url(.jpg);
+  }
+
+  .article2
+  {
+    position: absolute;
+width: 545px;
+height: 300px;
+left:10px;
+top: 10px;
+
+background: url(.jpg);
+  }
+
+  .article3 {
+    position: absolute;
+    width: 360px;
+    height: 300px;
+    left: 10px;
+    top: 320px;
+    
+    background: url(.jpg);
+  }
+
+  .article4 {
+    position: absolute;
+    width: 360px;
+    height: 300px;
+    left: 380px;
+    top: 320px;
+    
+    background: url(.jpg);
+  }
+
+  .article5 {
+    position: absolute;
+    width: 360px;
+    height: 300px;
+    right:10px;
+    top: 320px;
+    
+    background: url(.jpg);
+  }
+
+  #blog1 {
+    position:absolute;
+    top:370px;
+    left:100px;
+    font-family: 'Playfair Display';
+font-style: normal;
+font-weight: bolder;
+font-size: 30px;
+line-height: 40px;
+text-align: center;
+letter-spacing: 0.1em;
+
+
+
+color: #ffffff;
+  }
+
+  #blog2 {
+    position:absolute;
+    top:360px;
+    left:700px;
+    font-family: 'Playfair Display';
+font-style: normal;
+font-weight: bold;
+font-size: 30px;
+line-height: 40px;
+text-align: center;
+letter-spacing: 0.1em;
+
+color: #FFFFFF;
+  }
+
+  #blog3 {
+    position:absolute;
+    top:660px;
+    left:700px;
+    font-family: 'Playfair Display';
+font-style: normal;
+font-weight: bold;
+font-size: 30px;
+line-height: 40px;
+text-align: center;
+letter-spacing: 0.1em;
+
+color: #FFFFFF;
+  }
+
+  #blog4 {
+    position:absolute;
+    top:680px;
+    left:200px;
+    font-family: 'Playfair Display';
+font-style: normal;
+font-weight: bold;
+font-size: 30px;
+line-height: 40px;
+text-align: center;
+letter-spacing: 0.1em;
+
+color: #FFFFFF;
+  }
+
+  #blog5 {
+    position:absolute;
+    top:680px;
+    left:200px;
+    font-family: 'Playfair Display';
+font-style: normal;
+font-weight: bold;
+font-size: 30px;
+line-height: 40px;
+text-align: center;
+letter-spacing: 0.1em;
+
+color: #FFFFFF;
+  }
+
+.art1 {
+  position:relative;
+  display:inline-flex;
+  gap:200%;
+  top:-550px;
+  left:500px;
+  color:white;
+  
+  
+   
+}
+
+
+
+
+.art1 > div {
+  
+      top:380px;
+      left:500px;
+      font-weight: 800;
+      border-color:white;
+      border-style:solid;
+      padding:8px;
+      border-width:1.5px;
+      border-radius: 15px;   
+
+}
+
+
+ /*
+
+  .addb {
+    position: absolute;
+  width: 120px;
+  height: 25px;
+  left: 480px;
+  top: 700px;
+  
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border-radius: 5px;
+  opacity
+  border-style:solid;
+      border-color: solid red;
+ 
+  }
+  
+  #addb {
+      position:absolute;
+      color:white ;
+      top:-10px;
+      left:5px;
+      font-weight: 800;
+      
+  
+  }
+  
+
+.addb2 {
+  position: absolute;
+width: 120px;
+height: 25px;
+left: 780px;
+top: 400px;
+
+background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.5) 100%);
+
+border-radius: 5px;
+}
+
+#addb2 {
+    position:absolute;
+    color:#000000;
+    top:-10px;
+    left:5px;
+    font-weight: 800;
+
+}
+
+.addb1 {
+    position: absolute;
+  width: 120px;
+  height: 25px;
+  left: 480px;
+  top: 400px;
+  color:#000000;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.5) 100%);
+  
+  border-radius: 5px;
+  }
+  
+  #addb1 {
+      position:absolute;
+      color:#000000;
+      top:-10px;
+      left:5px;
+      font-weight: 800;
+  
+  }
+
+
+  

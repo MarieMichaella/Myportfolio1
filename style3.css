@@ -1,0 +1,331 @@
+body {
+  background-color: #f0f0f0;
+}
+
+
+.container {
+
+  position: relative; 
+  color: black;
+  
+}
+
+.grid-container {
+  position: absolute;
+  display: flex;
+  gap: 20%;
+  top: 0px;
+  left: 280px;
+  font-weight: bolder;
+  font-size: 20px; 
+}
+
+
+
+
+
+.search-btn {
+  position:absolute;
+  color:#000;
+  float: right;
+  width:40px;
+  height:25px; 
+  top:-125px;
+  left:708px;
+ 
+
+}
+
+.search-txt{
+  position:absolute;
+ 
+  font-size:13px;
+  top:-130px;
+  left:600px;
+  width:120px;
+  height:20px; 
+  border-radius: 10px;
+
+}
+
+a {
+
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+  
+}
+
+
+.rectangle {
+  position:absolute;
+  height:650px;
+  width:250px;
+  background-color:#C8DBDC;
+  display:inline-block;
+ 
+  left: 0px;
+  top: 0px;
+
+}
+
+.toprectangle {
+  position:absolute;
+  height:60px;
+  width:1013px;
+  background-color:#ffffff;
+  display:inline-block;
+ 
+  right: 0px;
+  top: 0px;
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+
+.menu {
+  position:absolute;
+  display:grid;
+  gap:45%;
+  font-weight: bolder;
+  font-size: 15px; 
+  top: 132px;
+  left:60px;
+  
+}
+
+.logomenu {
+  
+  position:absolute;
+  display:grid;
+  gap:56%;
+  font-weight: bolder;
+  font-size: 15px; 
+  top: 132px;
+  left:20px;
+}
+
+
+.flex-container {
+  position:relative;
+  display: inline-flex;
+  top: 70px;
+  left: 350px;
+  
+  
+
+  
+}
+
+.flex-container > div {
+width:180px;
+height:100px;
+
+border-radius: 4px;
+margin:20px;
+text-align:center;
+
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+
+
+}
+
+.rectangle3{
+  position:absolute;
+  width:230px;
+  height:50px;
+  background-color:white;
+  left:20px;
+  top:270px;
+  border-radius:25px 0px 0px 25px;
+
+}
+
+
+.firstmenu {
+  position:absolute;
+  left:260px;
+  font-size:20px;
+  top:20px;
+}
+
+.contact {
+  position:relative;
+  top:10px;
+}
+
+.articlerectangle {
+  position:absolute;
+  width:980px;
+  height:550px;
+  background-color: #ffffff;
+  left:280px;
+  top:90px;
+}
+
+.article1 {
+  position:absolute;
+  margin:10px;
+  width:315px;
+  height:200px;
+}
+
+.article2 {
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:315px;
+  height:200px;
+}
+
+.article3 {
+  position:absolute;
+  top:10px;
+  right:332px;
+  width:315px;
+  height:200px;
+}
+
+.article4 {
+  position:absolute;
+  top:280px;
+  right:332px;
+  width:315px;
+  height:200px;
+}
+
+.article5 {
+  position:absolute;
+  top:280px;
+  left:10px;
+  width:315px;
+  height:200px;
+}
+
+.article6 {
+  position:absolute;
+  top:280px;
+
+  width:315px;
+  height:200px;
+  right:10px;
+}
+
+.delete {
+  position:absolute;
+  display:flex;
+  top:220px;
+  font-size:20px;
+  left:280px;
+  gap:500%
+}
+
+.modify {
+  position:absolute;
+  display:flex;
+  top:220px;
+  font-size:20px;
+  left:240px;
+  gap:500%
+}
+
+.keep {
+  position:absolute;
+  display:flex;
+  top:220px;
+  font-size:20px;
+  left:200px;
+  gap:500%
+}
+
+.delete1 {
+  position:absolute;
+  display:flex;
+  top:490px;
+  font-size:20px;
+  left:280px;
+  gap:500%
+}
+
+.modify1 {
+  position:absolute;
+  display:flex;
+  top:490px;
+  font-size:20px;
+  left:240px;
+  gap:500%
+}
+
+.keep1 {
+  position:absolute;
+  display:flex;
+  top:490px;
+  font-size:20px;
+  left:200px;
+  gap:500%
+}
+
+* {
+  font-family:'Poppins', sans-serif;
+}
+
+.gallery-container {
+
+  display: flex;
+  margin: 100px auto 50px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ 
+  grid-gap: 50px;
+}
+
+
+.gallery-item {
+  position:relative;
+  top:70px;
+  left:300px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px #ccc;
+  width:50%;
+  height:100%;
+}
+/*
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+*/
+
+.gallery-item img {
+  width: 20%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.gallery-item h3 {
+  position:absolute;
+  font-size:25px;
+  font-weight: bolder;
+  top:0px;
+  left:160px;
+}
+
+.gallery-item button {
+  position:absolute;
+  top:50px;
+  left:550px;
+}
+
+.gallery-item p {
+  position:absolute;
+  left: 160px;
+  top:40px;
+
+}
+

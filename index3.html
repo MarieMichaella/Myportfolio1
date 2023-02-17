@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b88abec70f.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+      </style>
+    <link rel="stylesheet" href="style3.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+    <span class="toprectangle"></span>
+   
+    <span class="rectangle"></span>
+    <div class="firstmenu">
+        <iconify-icon icon="iconoir:menu-scale"></iconify-icon>
+        </div>
+    <span class="rectangle3"></span>
+    
+    <div class="container">
+        
+        <div class="grid-container">
+        <div class="contact">Modify Blogs</div>
+        
+        </div>
+        
+       
+
+        <div class="menu">
+            <span class="home">
+                <a href="index.html">Home</a></span>
+
+<span class="dashboard"><a href="/Dashboard/index1.html">Dashboard</a></span>
+
+<span class="addblogs">
+    <a href="index2.html">Add Blogs</a>
+    
+</span>
+<span class="modifyblogs">
+    <a href="index3.html">Modify Blogs</a>
+</span>
+
+    <div class="search-box">
+        <input class="search-txt type="text" name="" placeholder="Search">
+        <a class="search-btn" href="#">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+        </a>
+    </div>
+
+</div>
+
+<div class="logomenu">
+        <iconify-icon icon="ic:baseline-home"></iconify-icon>
+        <iconify-icon class="dashicon" icon="material-symbols:dashboard"></iconify-icon></span>
+        <iconify-icon class="addicon" icon="ic:baseline-plus"></iconify-icon>
+        <iconify-icon class="modifyicon" icon="material-symbols:edit"></iconify-icon>
+    
+</div>
+</div>
+
+</section>
+
+<div id="article-list"></div>
+  <div id="article-view"></div>
+  
+
+  
+  
+  <script>
+    // Retrieve the articles from localStorage
+    const articles = JSON.parse(localStorage.getItem('articles')) || [];
+    
+    // Get a reference to the "article-list" and "article-view" divs
+    const articleListDiv = document.getElementById('article-list');
+    const articleViewDiv = document.getElementById('article-view');
+
+    // Function to display a single article in the article view
+    const displayArticle = (article) => {
+      // Create the HTML for the article
+    
+
+      const articleHTML = `
+  <h2 class="article-name">${article.articleName}</h2>
+  <p>${article.ArticleDescription}</p>
+  <p>${article.message}</p>
+  <img src="${article.ArticlePicture}">
+`;
+
+      
+      // Update the article view with the new HTML
+      articleViewDiv.innerHTML = articleHTML;
+    };
+
+    // Function to display all articles in the gallery
+// Function to display all articles in the gallery
+const displayArticles = () => {
+  // Clear the gallery
+  articleListDiv.innerHTML = '';
+
+  // Loop through the articles and create a gallery item for each one
+  articles.forEach((article, index) => {
+    const galleryItem = document.createElement('div');
+    galleryItem.className = 'gallery-item';
+
+    const galleryItemHTML = `
+      <h3>${article.Articlename}</h3>
+      <img src="${article.ArticlePicture}">
+      <p>${article.ArticleDescription}</p>
+      <button class="delete-button" data-index="${index}">Delete</button>
+    `;
+    galleryItem.innerHTML = galleryItemHTML;
+
+    // Attach a click event listener to the gallery item to display the article in the article view
+    galleryItem.addEventListener('click', () => displayArticle(article));
+
+    // Attach a click event listener to the delete button to remove the article from the list
+    const deleteButton = galleryItem.querySelector('.delete-button');
+    deleteButton.addEventListener('click', (event) => {
+      const index = event.target.getAttribute('data-index');
+      articles.splice(index, 1);
+      localStorage.setItem('articles', JSON.stringify(articles));
+      location.reload();
+    });
+
+    // Append the gallery item to the gallery container
+    articleListDiv.appendChild(galleryItem);
+  });
+};
+
+    
+    
+    // Call the displayArticles function to initially display all articles
+    displayArticles();
+
+    // Save the article to local storage
+    const saveArticle = () => {
+  // Get the input values
+  const articleNameInput = document.getElementById('article-name');
+  const articleDescriptionInput = document.getElementById('article-description');
+  const articleContentInput = document.getElementById('article-content');
+  const articlePictureInput = document.querySelector('input[type="file"]');
+
+  // Create a new article object
+  const article = {
+    Articlename: articleNameInput.value,
+    ArticleDescription: articleDescriptionInput.value,
+    message: articleContentInput.value,
+    ArticlePicture: URL.createObjectURL(articlePictureInput.files[0]) // create a URL for the file
+  };
+
+  // Add the article to the articles array
+  articles.push(article);
+
+  // Save the articles to local storage
+  localStorage.setItem('articles', JSON.stringify(articles));
+
+  // Reset the form
+  articleNameInput.value = '';
+  articleDescriptionInput.value = '';
+  articleContentInput.value = '';
+  articlePictureInput.value = '';
+
+  
+      // Reload the page
+      location.reload();
+    };
+  
+    // Get a reference to the save button and attach the saveArticle function to its click event
+    const saveButton = document.getElementById('save-button');
+    saveButton.addEventListener('click', saveArticle);
+  </script>
+
+</body>
+</html>
+
+<!--
+
+<div class="articlerectangle">
+         
+    
+    
+    <img class ="article1" src="christin-hume-mfB1B1s4sMc-unsplash.jpg">
+    
+    <img class="article2" src="unsplash-NuFUbftUu_s-unsplash.jpg">
+   
+    <img class="article3 " src="kelly-sikkema-377gw1wN0Ic-unsplash.jpg">
+     <div class="delete">
+        <iconify-icon icon="material-symbols:delete-outline-sharp"></iconify-icon>
+        <iconify-icon icon="material-symbols:delete-outline-sharp"></iconify-icon>
+        <iconify-icon icon="material-symbols:delete-outline-sharp"></iconify-icon>
+     </div>
+    <div class="modify">
+        <iconify-icon icon="icon-park-outline:modify"></iconify-icon>
+        <iconify-icon icon="icon-park-outline:modify"></iconify-icon>
+        <iconify-icon icon="icon-park-outline:modify"></iconify-icon>
+    </div>
+    <div class="keep">
+    <iconify-icon icon="material-symbols:bookmark-remove"></iconify-icon>
+    <iconify-icon icon="material-symbols:bookmark-remove"></iconify-icon>
+    <iconify-icon icon="material-symbols:bookmark-remove"></iconify-icon>
+</div>
+
+<div class="delete1">
+    <iconify-icon icon="material-symbols:delete-outline-sharp"></iconify-icon>
+    <iconify-icon icon="material-symbols:delete-outline-sharp"></iconify-icon>
+    <iconify-icon icon="material-symbols:delete-outline-sharp"></iconify-icon>
+ </div>
+<div class="modify1">
+    <iconify-icon icon="icon-park-outline:modify"></iconify-icon>
+    <iconify-icon icon="icon-park-outline:modify"></iconify-icon>
+    <iconify-icon icon="icon-park-outline:modify"></iconify-icon>
+</div>
+<div class="keep1">
+<iconify-icon icon="material-symbols:bookmark-remove"></iconify-icon>
+<iconify-icon icon="material-symbols:bookmark-remove"></iconify-icon>
+<iconify-icon icon="material-symbols:bookmark-remove"></iconify-icon>
+</div>
+
+     
+    <img class ="article4" src="christina-wocintechchat-com-9-ohfp-Dicg-unsplash.jpg">
+    <img class ="article5" src="article5.jfif">
+    <img class ="article6" src="article1.jfif">
+    
+    
+
+-->
+
+</body>
+</html>
+
+
+    
+</div>
+</section>

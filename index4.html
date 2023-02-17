@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style4.css">
+  <title>Article Viewer</title>
+</head>
+<body>
+  <div id="article-list"></div>
+  <div id="article-view"></div>
+  
+  <script>
+    // Retrieve the articles from localStorage
+    const articles = JSON.parse(localStorage.getItem('articles')) || [];
+    
+    // Get a reference to the "article-list" and "article-view" divs
+    const articleListDiv = document.getElementById('article-list');
+    const articleViewDiv = document.getElementById('article-view');
+
+    // Function to display a single article in the article view
+    const displayArticle = (article) => {
+      // Create the HTML for the article
+      const articleHTML = `
+        <h2>${article.Articlename}</h2>
+        <p>${article.ArticleDescription}</p>
+        <p>${article.message}</p>
+        <img src="${article.ArticlePicture}">
+      `;
+      
+      // Update the article view with the new HTML
+      articleViewDiv.innerHTML = articleHTML;
+    };
+
+    // Function to display all articles in the gallery
+const displayArticles = () => {
+  // Clear the gallery
+  articleListDiv.innerHTML = '';
+
+  // Loop through the articles and create a gallery item for each one
+  articles.forEach((article, index) => {
+    const galleryItem = document.createElement('div');
+    galleryItem.className = 'gallery-item';
+
+    const galleryItemHTML = `
+      <h3>${article.Articlename}</h3>
+      <img src="${article.ArticlePicture}">
+    `;
+    galleryItem.innerHTML = galleryItemHTML;
+
+    // Attach a click event listener to the gallery item to display the article in the article view
+    galleryItem.addEventListener('click', () => displayArticle(article));
+
+    // Append the gallery item to the gallery container
+    articleListDiv.appendChild(galleryItem);
+  });
+};
+
+    
+    
+    // Call the displayArticles function to initially display all articles
+    displayArticles();
+
+    // Save the article to local storage
+    const saveArticle = () => {
+      // Get the input values
+      const articleNameInput = document.getElementById('article-name');
+      const articleDescriptionInput = document.getElementById('article-description');
+      const articleContentInput = document.getElementById('article-content');
+      const articlePictureInput = document.querySelector('input[type="file"]');
+  
+      // Create a new article object
+      const article = {
+        Articlename: articleNameInput.value,
+        ArticleDescription: articleDescriptionInput.value,
+        message: articleContentInput.value,
+        ArticlePicture: URL.createObjectURL(articlePictureInput.files[0]) // create a URL for the file
+      };
+  
+      // Add the article to the articles array
+      articles.push(article);
+  
+      // Save the articles to local storage
+      localStorage.setItem('articles', JSON.stringify(articles));
+  
+      // Reset the form
+      articleNameInput.value = '';
+      articleDescriptionInput.value = '';
+      articleContentInput.value = '';
+      articlePictureInput.value = '';
+  
+      // Reload the page
+      location.reload();
+    };
+  
+    // Get a reference to the save button and attach the saveArticle function to its click event
+    const saveButton = document.getElementById('save-button');
+    saveButton.addEventListener('click', saveArticle);
+  </script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style4.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="articles"></div>
+    <script>
+      // Retrieve the articles from localStorage
+      const articles = JSON.parse(localStorage.getItem('articles'));
+  
+      // Get a reference to the "articles" div
+      const articlesDiv = document.getElementById('articles');
+  
+      // Loop through the articles and create HTML for each one
+      articles.forEach(article => {
+        const articleHTML = `
+          <h2>${article.Articlename}</h2>
+          <p>${article.ArticleDescription}</p>
+          <p>${article.message}</p>
+          <img src="${article.ArticlePicture}">
+        `;
+        articlesDiv.insertAdjacentHTML('beforeend', articleHTML);
+      });
+    </script>
+  </body>
+  
+  <div id="articles-container"></div>
+  
+  <script>
+    const articlesContainer = document.getElementById('articles-container');
+  
+    // Get the articles from local storage
+    const existingArticles = localStorage.getItem('articles');
+    let articles1 = [];
+  
+    // If there are articles in local storage, parse them into an array
+    if (existingArticles) {
+      articles = JSON.parse(existingArticles);
+    }
+  
+    // Loop through the articles array and create HTML elements for each article
+    articles.forEach(articles1 => {
+      // Create a container element for the article
+      const articleContainer = document.createElement('div');
+      articleContainer.classList.add('article');
+  
+      // Create the HTML elements for the article data
+      const articleName = document.createElement('h2');
+      articleName.textContent = article.Articlename;
+  
+      const articleDescription = document.createElement('p');
+      articleDescription.textContent = article.ArticleDescription;
+  
+      const articleContent = document.createElement('div');
+      articleContent.innerHTML = article.message;
+  
+      const articlePicture = document.createElement('img');
+      articlePicture.setAttribute('src', article.ArticlePicture);
+  
+      // Append the article data elements to the article container
+      articleContainer.appendChild(articleName);
+      articleContainer.appendChild(articleDescription);
+      articleContainer.appendChild(articleContent);
+      articleContainer.appendChild(articlePicture);
+  
+      // Append the article container to the articles container
+      articlesContainer.appendChild(articleContainer);
+    });
+  
+    // Save the article to local storage
+    const saveArticle = () => {
+      // Get the input values
+      const articleNameInput = document.getElementById('article-name');
+      const articleDescriptionInput = document.getElementById('article-description');
+      const articleContentInput = document.getElementById('article-content');
+      const articlePictureInput = document.querySelector('input[type="file"]');
+  
+      // Create a new article object
+      const article = {
+        Articlename: articleNameInput.value,
+        ArticleDescription: articleDescriptionInput.value,
+        message: articleContentInput.value,
+        ArticlePicture: URL.createObjectURL(articlePictureInput.files[0]) // create a URL for the file
+      };
+  
+      // Add the article to the articles array
+      articles.push(article);
+  
+      // Save the articles to local storage
+      localStorage.setItem('articles', JSON.stringify(articles));
+  
+      // Reset the form
+      articleNameInput.value = '';
+      articleDescriptionInput.value = '';
+      articleContentInput.value = '';
+      articlePictureInput.value = '';
+  
+      // Reload the page
+      location.reload();
+    };
+  
+    // Get a reference to the save button and attach the saveArticle function to its click event
+    const saveButton = document.getElementById('save-button');
+    saveButton.addEventListener('click', saveArticle);
+  </script>
+  
+  
+<!---
+<body>
+
+    <div id="articles"></div>
+    <script>
+      // Retrieve the articles from localStorage
+      const articles = JSON.parse(localStorage.getItem('articles'));
+  
+      // Get a reference to the "articles" div
+      const articlesDiv = document.getElementById('articles');
+  
+      // Loop through the articles and create HTML for each one
+      articles.forEach(article => {
+        const articleHTML = `
+          <h2>${article.Articlename}</h2>
+          <p>${article.ArticleDescription}</p>
+          <p>${article.message}</p>
+          <img src="${article.ArticlePicture}">
+        `;
+        articlesDiv.insertAdjacentHTML('beforeend', articleHTML);
+      });
+    </script>
+  </body>
+  
+  <script>
+    const articlesContainer = document.getElementById('articles-container');
+  
+    // Get the articles from local storage
+    const existingArticles = localStorage.getItem('articles');
+    let articles = [];
+  
+    // If there are articles in local storage, parse them into an array
+    if (existingArticles) {
+      articles = JSON.parse(existingArticles);
+    }
+  
+    // Loop through the articles array and create HTML elements for each article
+    articles.forEach(article => {
+      // Create a container element for the article
+      const articleContainer = document.createElement('div');
+      articleContainer.classList.add('article');
+  
+      // Create the HTML elements for the article data
+      const articleName = document.createElement('h2');
+      articleName.textContent = article.Articlename;
+  
+      const articleDescription = document.createElement('p');
+      articleDescription.textContent = article.ArticleDescription;
+  
+      const articleContent = document.createElement('div');
+      articleContent.innerHTML = article.message;
+  
+      const articlePicture = document.createElement('input');
+      articlePicture.setAttribute('type', 'file');
+  
+      // Append the article data elements to the article container
+      articleContainer.appendChild(articleName);
+      articleContainer.appendChild(articleDescription);
+      articleContainer.appendChild(articleContent);
+      articleContainer.appendChild(articlePicture);
+  
+      // Append the article container to the articles container
+      articlesContainer.appendChild(articleContainer);
+    });
+  
+    // Save the article to local storage
+    const saveArticle = () => {
+      // Get the input values
+      const articleNameInput = document.getElementById('article-name');
+      const articleDescriptionInput = document.getElementById('article-description');
+      const articleContentInput = document.getElementById('article-content');
+      const articlePictureInput = document.querySelector('input[type="file"]');
+  
+      // Create a new article object
+      const article = {
+        Articlename: articleNameInput.value,
+        ArticleDescription: articleDescriptionInput.value,
+        message: articleContentInput.value,
+        ArticlePicture: articlePictureInput.files[0].name // store the name of the file
+      };
+  
+      // Add the article to the articles array
+      articles.push(article);
+  
+      // Save the articles to local storage
+      localStorage.setItem('articles', JSON.stringify(articles));
+  
+      // Reset the form
+      articleNameInput.value = '';
+      articleDescriptionInput.value = '';
+      articleContentInput.value = '';
+      articlePictureInput.value = '';
+  
+      // Reload the page
+      location.reload();
+    };
+  
+    // Get a reference to the save button and attach the saveArticle function to its click event
+    const saveButton = document.getElementById('save-button');
+    saveButton.addEventListener('click', saveArticle);
+  </script>
+  
+<!--
+<body>
+    <div class="blogpart">
+    
+        <div class="rectblog"></div>
+    
+        <span class="blogword">Blog</span>
+        <div class="scroll">
+            <div class="home"><a href="index.html"> <iconify-icon icon="material-symbols:arrow-back-ios-new" style="color: #c76a07;"></iconify-icon></a></div>
+
+        </div>
+        <div class="category">
+        <div class="html"><p id="htmlwords">HTML</p></div>
+        <div class="css"><p id="csswords">CSS</p></div>
+        <div class="sql"><p id="sqlwords">SQL</p></div>
+    </div>
+
+    <div id="articles-container">
+
+    </div>
+  
+-->
+   <!--- <body>
+        <div id="articles"></div>
+        <script>
+          // Retrieve the articles from localStorage
+          const articles = JSON.parse(localStorage.getItem('articles'));
+      
+          // Get a reference to the "articles" div
+          const articlesDiv = document.getElementById('articles');
+      
+          // Loop through the articles and create HTML for each one
+          articles.forEach(article => {
+            const articleHTML = `
+              <h2>${article.Articlename}</h2>
+              <p>${article.ArticleDescription}</p>
+              <p>${article.message}</p>
+              <p>${article.ArticlePicture}</p>
+            `;
+            articlesDiv.insertAdjacentHTML('beforeend', articleHTML);
+          });
+        </script>
+      </body>
+    -->
+      
+  <!--
+    <div class="articlerectangle">
+         
+    
+    
+        <img class ="article1" src="christin-hume-mfB1B1s4sMc-unsplash.jpg">
+        <img class="article2" src="unsplash-NuFUbftUu_s-unsplash.jpg">
+        <img class="article3 " src="kelly-sikkema-377gw1wN0Ic-unsplash.jpg">
+        <img class ="article4" src="christina-wocintechchat-com-9-ohfp-Dicg-unsplash.jpg">
+        <img class ="article5" src="article5.jfif">
+        
+        </div>
+    </div>
+
+        <div>
+            <div id="blog1">
+            HTML Introduction
+                
+            </div>
+            
+            <div id="blog2">JAVA SCRIPT</div>
+            <div id="blog3">Programming WITH C</div>
+            <div id="blog4">SQL</div>
+            <div id="blog5">Linux</div>
+
+            <div class="art1">
+                <div class="rect1">
+                    <a  style="color:white" href="index5.html">Read_More</a></div>
+                <div class="rect1">Read_More</div>
+            
+                
+            </div> 
+        --> 
+</html>
